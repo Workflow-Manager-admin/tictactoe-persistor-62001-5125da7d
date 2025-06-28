@@ -104,9 +104,6 @@ def decode_access_token(token: str) -> Optional[TokenData]:
 
 
 # PUBLIC_INTERFACE
-
-
-
 def authenticate_user(db: Session, username: str, password: str):
     """Verify user credentials and return user if valid."""
     user = db.query(User).filter(User.username == username).first()
@@ -115,6 +112,7 @@ def authenticate_user(db: Session, username: str, password: str):
     if not verify_password(password, user.password_hash):
         return None
     return user
+
 
 # PUBLIC_INTERFACE
 def get_current_user(
